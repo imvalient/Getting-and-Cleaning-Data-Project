@@ -42,14 +42,14 @@ measuredXSet <- xSet[, measuredFeatures]
 # Significative name to the measurable X data set.
 names(measuredXSet) <- measuredFeaturesNames
 
-# Merge subject, Y data set and X data set into a tiny data set.
-tinyData <- cbind(subjectSet, ySet, measuredXSet)
+# Merge subject, Y data set and X data set into a tidy data set.
+tidyData <- cbind(subjectSet, ySet, measuredXSet)
 
 # Reorganize data so  mean and standard deviation values are set as two columns key value per corresponding row.
-gatheredData <- gather(tinyData, key, value, 4:82)
+gatheredData <- gather(tidyData, key, value, 4:82)
 
 # Cast data calculating for each row, the mean of the var column and group data by activity and subject.
-meanTinyData <- dcast(gatheredData, activityLabel + subject ~ key, mean)
+meanTidyData <- dcast(gatheredData, activityLabel + subject ~ key, mean)
 
-# Output the data into a text file named "tiny-data.txt".
-write.table(meanTinyData, file = 'tiny-data.txt', row.names = FALSE)
+# Output the data into a text file named "tidy-data.txt".
+write.table(meanTidyData, file = 'tidy-data.txt', row.names = FALSE)
