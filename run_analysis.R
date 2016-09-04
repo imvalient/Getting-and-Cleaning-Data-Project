@@ -52,4 +52,4 @@ gatheredData <- gather(tinyData, key, value, 4:82)
 meanTinyData <- dcast(gatheredData, activityLabel + subject ~ key, mean)
 
 # Output the data into a text file named "tiny-data.txt".
-write.table(meanTinyData, file = 'tiny-data.txt')
+write.table(meanTinyData, file = 'tiny-data.txt', row.names = FALSE)
